@@ -32,8 +32,8 @@ public class Main {
         sc.close();
         switch (choice){
             case 1: // Reverse Array
-
-            	break;
+	reverse(arr);
+                break;
 
             case 2: // Check palindrome
             	CheckPalindrome(stringArr);
@@ -71,11 +71,11 @@ public class Main {
                 break;
 
             case 10: // Get the minimum 3 numbers
-            	Get_Min_3(stringArr);
+		Get_Min_3(stringArr);
                 break;
 
             case 11: // Distnict Array
-            	DisntinctArray(intArr);
+		DisntinctArray(intArr);
                 break;
 
             case 12: // Zero if less than zero
@@ -83,11 +83,13 @@ public class Main {
                 break;
 
             case 13: // Count primes
+			
+		System.out.println("counter prime number = " + countPrimes(intArr) );
 
                 break;
 
             case 14: // Return only primes
-            	System.out.println("prime array : " + returnOnlyPrime(intArr));
+            	returnOnlyPrime(intArr);
                 break;
 
             case 15: // Find Largest Prime
@@ -103,15 +105,18 @@ public class Main {
                 break;
 
             case 18: //execute all
+		reverse(arr);
             	CheckPalindrome(stringArr);
             	GetMedian(intArr);
-            	System.out.println("prime array : " + returnOnlyPrime(intArr));
+            	returnOnlyPrime(intArr);
             	find_Smallest_Prime(intArr);
                 most_Repeated_Value(convertIntegers(intArr));
-				DisntinctArray(intArr);
-				Get_Min_3(stringArr);
+		DisntinctArray(intArr);
+		Get_Min_3(stringArr);
+		System.out.println("counter prime number = " + countPrimes(intArr) );
                 break;
         }
+	    
 
     }
 
@@ -224,6 +229,7 @@ public class Main {
 			if(isPrime(i))
 				arr.add(i);
 		}
+		System.out.println(arr);
 		return arr;
 	}
 	/**
@@ -332,7 +338,40 @@ public class Main {
 		}
 		
 	}
-	
+	static void reverse (int []arr){
+        ArrayList arr2 = new ArrayList<>();
+        for(int i = 0 ; i < arr.length ; i++ )
+            arr2.add(arr[i]);
+        for(int i = 1 ; i <= arr.length ; i++ )
+            arr[i-1] = (int) arr2.get(arr.length-i);
+    }
+	//mohrail fawzy
+	//20160323
+	public static boolean checkPrime(int n) {
+	    for(int i=2;i<n;i++) {
+	        if(n%i==0)
+	            return false;
+	    }
+	    return true;
+	}
+	public static int countPrimes(int arr[]) {
+
+		int count = 0;
+		for (int m = 0; m < arr.length; m++) {
+			int x = arr[m];
+			if(x<2)
+				count+=0;
+			else {
+				if (checkPrime(x)) {
+					count++;
+				}
+			}
+			
+			
+		}
+
+		return count;
+	}
 
 
 
